@@ -18,6 +18,15 @@
                 </div>
             </div>
         </div>
+        @foreach($proyectosArray as $proyecto)
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item active">{{ $proyecto['tituloproy'] }}</li>
+                    <li class="list-group-item">{{ $proyecto['presupuestoproy'] }}</li>
+                    <li class="list-group-item">{{ $proyecto['vacantesproy'] }}</li>
+                </ul>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection
