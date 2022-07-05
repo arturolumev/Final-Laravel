@@ -21,11 +21,17 @@ Auth::routes();
 
 Route::post('/LoginVue', [App\Http\Controllers\LoginController::class, 'login']);
 Route::post('/RegisterVue', [App\Http\Controllers\LoginController::class, 'register']);
-Route::get('/proyectos', [ProyectosController::class, 'index']);
 
+Route::post('/LoginVueEmpresa', [App\Http\Controllers\LoginEmpresaController::class, 'login']);
+Route::post('/RegisterVueEmpresa', [App\Http\Controllers\LoginEmpresaController::class, 'register']);
 
+Route::post('/PostularVue', [App\Http\Controllers\PostularController::class, 'postular']);
+
+Route::get('/proyectos', [ProyectosController::class, 'get']);
+Route::post('/crearProyectos', [ProyectosController::class, 'add']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 //Route::get('/categorias', [App\Http\Controllers\CategoriaController::class, 'index']);
 //Route::get('/categorias/create', [App\Http\Controllers\CategoriaController::class, 'create']);
 //Route::post('/categorias/insert', [App\Http\Controllers\CategoriaController::class, 'insert']);

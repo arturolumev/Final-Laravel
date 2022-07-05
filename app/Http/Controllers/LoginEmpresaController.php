@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http; // NECESARIO PARA EL API
 use App\Models\User;
 
-class LoginController extends Controller
+class LoginEmpresaController extends Controller
 {
     public function login (Request $request) {
-        $email = User::where('email', $request->email)->first();
+        $email = User::where('ruc', $request->ruc)->where('email', $request->email)->first();
 
         if (Hash::check($request->password, $email->password)) {
             return response([
@@ -29,8 +29,10 @@ class LoginController extends Controller
     {
         //dd($request);
         $usuario = new User();
-        $usuario->nombre = $request->nombre;
-        $usuario->apellido = $request->apellido;
+        $usuario->nombreEmpresa = $request->nombreEmpresa;
+        $usuario->ruc = $request->ruc;
+        $usuario->nombreEncargado = $request->nombreEncargado;
+        $usuario->apellidoEncargado = $request->apellidoEncargado;
         $usuario->email = $request->email;
         $usuario->tipo = $request->tipo;
         $usuario->password = Hash::make($request->password); // VERIFICAR SI FUNCIONA
